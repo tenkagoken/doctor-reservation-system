@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] · CarePoint</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand" asp-controller="Home" asp-action="Index"><span class="brand-mark">✳</span> CarePoint<span class="brand-dot">.</span></a>
+            <nav aria-label="Main navigation">
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="doctors">Our doctors</a>
+                <a href="mailto:hello@carepoint.example">Contact</a>
+            </nav>
+            <a class="nav-cta" asp-controller="Home" asp-action="Index" asp-fragment="doctors">Find a doctor <span>↗</span></a>
+        </div>
+    </header>
+
+    <section class="hero" aria-label="Welcome to CarePoint">
+        <div class="container hero-grid">
+            <div>
+                <div class="eyebrow"><span class="eyebrow-line"></span> CARE THAT FITS YOUR LIFE</div>
+                <h1>Better care starts<br />with the <em>right doctor.</em></h1>
+                <p>Find your specialist, choose a convenient time, and reserve your visit in just a few steps.</p>
+                <a class="hero-button" asp-controller="Home" asp-action="Index" asp-fragment="doctors">Explore our doctors <span>↗</span></a>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+                <div class="hero-center">✳</div>
+                <div class="hero-pill pill-one">A time for you <span>↗</span></div>
+                <div class="hero-pill pill-two"><span class="pill-spark">✦</span> Expert care</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container main-content">@RenderBody()</main>
+
+    <footer class="site-footer">
+        <div class="container footer-top">
+            <div><a class="brand footer-brand" asp-controller="Home" asp-action="Index"><span class="brand-mark">✳</span> CarePoint<span class="brand-dot">.</span></a><p>Thoughtful care, one appointment at a time.</p></div>
+            <div class="footer-links"><a asp-controller="Home" asp-action="Index">Home</a><a asp-controller="Home" asp-action="Index" asp-fragment="doctors">Our doctors</a><a href="mailto:hello@carepoint.example">Contact</a></div>
+        </div>
+        <div class="container footer-bottom"><span>© @DateTime.Now.Year CarePoint. All rights reserved.</span><span>Made for healthier days.</span></div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

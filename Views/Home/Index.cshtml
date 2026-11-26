@@ -1,0 +1,17 @@
+@model IReadOnlyList<Doctor>
+@{ ViewData["Title"] = "Find your doctor"; }
+<section id="doctors" class="section-head">
+    <div><div class="eyebrow small"><span class="eyebrow-line"></span> OUR SPECIALISTS</div><h2>Meet the people<br />behind your care<span class="accent">.</span></h2></div>
+    <p>Experienced professionals, here to listen and help you feel your best.</p>
+</section>
+<div class="doctor-grid">
+    @foreach (var doctor in Model)
+    {
+        <a class="doctor-card" asp-controller="Doctors" asp-action="Details" asp-route-id="@doctor.Id" aria-label="View available appointments for @doctor.Name">
+            <div class="doctor-photo portrait-@doctor.Id" style="background-image:url('@Url.Content(doctor.PhotoUrl)')" role="img" aria-label="Portrait of @doctor.Name"></div>
+            <div class="doctor-content"><div class="specialty">@doctor.Specialization</div><h3>@doctor.Name</h3><div class="doctor-bottom"><span>@doctor.PhoneNumber</span><span class="round-arrow">↗</span></div></div>
+        </a>
+    }
+</div>
+@if (!Model.Any()) { <p class="empty">No doctors have been added yet. Run the database setup script in SSMS.</p> }
+<section class="reassurance"><span class="reassurance-icon">✳</span><div><strong>Your health, your schedule.</strong><p>Choose the time that works for you. We’ll take care of the rest.</p></div><a asp-controller="Home" asp-action="Index" asp-fragment="doctors">Browse specialists ↗</a></section>

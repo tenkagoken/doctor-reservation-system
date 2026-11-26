@@ -1,0 +1,2 @@
+@{ ViewData["Title"] = "Appointment unavailable"; }
+<section class="result-panel"><div class="result-icon muted">!</div><h2>That time was just taken<span class="accent">.</span></h2><p>Please choose another available appointment.</p><a class="hero-button" asp-controller="Doctors" asp-action="Details" asp-route-id="@ViewBag.DoctorId">See available times ↗</a></section>

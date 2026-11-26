@@ -1,0 +1,14 @@
+@model Doctor
+@{ ViewData["Title"] = $"Appointments with {Model.Name}"; }
+<div class="back-row"><a asp-controller="Home" asp-action="Index" asp-fragment="doctors">← All doctors</a></div>
+<section class="detail-heading"><div class="detail-photo portrait-@Model.Id" style="background-image:url('@Url.Content(Model.PhotoUrl)')" role="img" aria-label="Portrait of @Model.Name"></div><div><div class="eyebrow small"><span class="eyebrow-line"></span> @Model.Specialization.ToUpperInvariant()</div><h2>@Model.Name<span class="accent">.</span></h2><p>Choose a time that fits your day. Available visits are shown below.</p><a class="phone-link" href="tel:@Model.PhoneNumber">☎ @Model.PhoneNumber</a></div></section>
+<section class="slots-section"><div class="section-head slots-head"><div><div class="eyebrow small"><span class="eyebrow-line"></span> AVAILABLE TIMES</div><h2>Book your visit<span class="accent">.</span></h2></div><p>Select an open appointment to continue.</p></div>
+@if (Model.Appointments.Any())
+{
+    <div class="table-wrap"><table class="slots-table"><thead><tr><th>Date</th><th>Day</th><th>Time</th><th>Availability</th><th></th></tr></thead><tbody>
+    @foreach (var slot in Model.Appointments)
+    { <tr><td class="date-cell">@slot.StartsAt.ToString("dd MMM yyyy")</td><td>@slot.StartsAt.ToString("dddd")</td><td>@slot.StartsAt.ToString("h:mm tt") – @slot.EndsAt.ToString("h:mm tt")</td><td><span class="available"><span></span> Available</span></td><td><a class="book-link" asp-controller="Bookings" asp-action="Create" asp-route-id="@slot.Id">Book now ↗</a></td></tr> }
+    </tbody></table></div>
+}
+else { <div class="empty">No appointments are available right now. Please check again soon.</div> }
+</section>

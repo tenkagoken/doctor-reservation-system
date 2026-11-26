@@ -22,4 +22,3 @@ The sample doctors and portraits are fictional. Appointment times are seeded in 
 - `Appointment.IsBooked` and `Appointment.UserId` change together when a reservation succeeds. A conditional update prevents double booking.
 
 The confirmation page shows only the booking reference and visit details, not the national ID. In a real deployment, add authentication and data retention rules for customer records.
-
