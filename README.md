@@ -10,7 +10,7 @@ An ASP.NET Core MVC application for selecting a doctor, viewing that doctor's av
 ## Set up
 
 1. Open SSMS and connect to your SQL Server instance. Execute `database/setup.sql`. It creates the `DoctorReservationSystem` database and sample data. Running the script again does not erase bookings.
-2. Open `DoctorReservationSystem.csproj` in Visual Studio. Edit `appsettings.json` if your SQL Server instance is not `localhost` (for SQL Express, use `Server=.\\SQLEXPRESS`). Windows authentication is configured by default.
+2. Open `DoctorReservationSystem.sln` in Visual Studio. Edit `appsettings.json` if your SQL Server instance is not `localhost` (for SQL Express, use `Server=.\\SQLEXPRESS`). Windows authentication is configured by default.
 3. Restore NuGet packages, then press F5. The site launches at `https://localhost:7168`.
 
 The sample doctors and portraits are fictional. Appointment times are seeded in local server time for the next seven days. SSMS can be used to add more rows to `Doctors` and `Appointments`.
